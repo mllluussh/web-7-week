@@ -1,0 +1,136 @@
+/* SLIDE 22: @import comes before ordinary style rules. */
+@import url("typography.css");
+
+/* Shared foundation. Keep comments when explaining the project. */
+* { box-sizing: border-box; }
+body { margin: 0; color: #213d39; background-color: #f7f4ed; }
+a { color: inherit; text-underline-offset: 5px; }
+img { max-width: 100%; height: auto; }
+.section { padding: 72px 0; border-bottom: 1px solid #dbdfd5; }
+main { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+.section-heading { margin-bottom: 32px; }
+.section-heading > p:last-child { max-width: 650px; }
+.eyebrow { color: #8c4a33; }
+
+/* SLIDE 16: sticky stays in normal flow. top: 0 supplies its threshold. */
+.site-header { position: sticky; top: 0; z-index: 10; background-color: rgb(247 244 237 / 97%); border-bottom: 1px solid #dbdfd5; }
+.header-inner { max-width: 1120px; margin: 0 auto; padding: 17px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.brand { font-family: Georgia, serif; font-size: 29px; text-decoration: none; }
+.brand-dot { color: #bc6245; }
+
+/* SLIDE 7: Flexbox belongs to the parent of the links. */
+nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+nav a { font-size: 14px; text-decoration: none; }
+
+/* SLIDE 9: hover plus a visible keyboard focus. */
+a:hover { color: #a24d32; text-decoration: underline; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible, .preview:focus-visible { outline: 3px solid #bc6245; outline-offset: 5px; }
+.skip-link { position: fixed; top: 10px; left: 10px; z-index: 20; padding: 10px; background: white; transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+/* Anchor targets remain below the sticky header. */
+section[id], main[id] { scroll-margin-top: 120px; }
+
+/* SLIDE 21: background-size: cover can crop. SVG is included locally. */
+.hero { margin-top: 28px; position: relative; isolation: isolate; min-height: 490px; background-image: url("media/hero.svg"); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 18px; color: #fff9ed; }
+/* SLIDE 17: transparent color affects this background, not the hero text. */
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background-color: rgba(13, 37, 34, 0.84); }
+/* SLIDE 13: both axes, row direction by default. */
+.hero-content { min-height: 490px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 55px 24px 70px; }
+/* Because direction is column here: justify-content is vertical. */
+.hero .eyebrow { color: #e1bda6; }
+/* SLIDE 20: text-shadow follows the letters. */
+.hero h1 { text-shadow: 1px 2px 4px rgb(0 0 0 / 20%); }
+.hero-description { max-width: 530px; color: #e0e7dc; }
+.hero-caption { position: absolute; bottom: 14px; left: 20px; right: 20px; font-size: 11px; text-align: center; color: #d4decf; margin: 0; }
+
+/* SLIDE 3: floated photo plus flow-root to contain the float. */
+.about { display: flow-root; max-width: 850px; }
+.about-photo { float: right; width: 160px; height: 160px; object-fit: cover; margin: 0 0 20px 28px; border-radius: 50%; border: 5px solid #e4eadc; }
+
+/* SLIDE 8: three flexible grid columns. */
+.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+/* SLIDES 4, 5, 11: box shadow, rounded corners, transition. */
+.project-card { position: relative; min-width: 0; background-color: white; border: 1px solid #dde3d8; border-radius: 16px; box-shadow: 0 8px 24px rgb(0 0 0 / 7%); transition: transform 0.2s ease; }
+.project-card:hover { transform: translateY(-4px); }
+.project-visual { position: relative; min-height: 190px; border-radius: 15px 15px 0 0; padding: 24px; }
+.visual-portfolio { background-color: #dce7da; }
+.visual-books { background-color: #efdfcf; }
+.visual-lab { background-color: #d7e4e2; }
+.project-number { font-family: Georgia, serif; font-size: 78px; color: rgb(33 61 57 / 60%); }
+/* SLIDE 18: absolute badge uses the positioned visual as its reference. */
+.badge { position: absolute; top: 18px; right: 18px; z-index: 2; background-color: rgb(255 255 255 / 80%); border-radius: 4px; padding: 3px 7px; font-size: 9px; font-weight: bold; letter-spacing: 1px; }
+.project-body { padding: 26px; }
+.project-body .eyebrow { font-size: 9px; }
+.project-body p { font-size: 15px; }
+/* SLIDE 23: a link can form a box while remaining in the text flow. */
+.project-link { display: inline-block; padding: 6px 0; font-size: 14px; font-weight: bold; text-decoration: none; border-bottom: 1px solid currentColor; }
+.project-link span { margin-left: 12px; }
+.hero-link { color: #fff9ed; }
+/* SLIDE 10: HTML remains, layout box disappears. Change to block to show it. */
+.draft-project { display: none; }
+
+.reading-section, .contact-section { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.reading-list details { border-bottom: 1px solid #d4dbcd; padding: 18px 0; }
+summary { cursor: pointer; font-weight: bold; }
+summary span { display: block; color: #66756b; font-size: 12px; font-weight: normal; }
+details p { margin: 16px 0 0; font-size: 15px; }
+.lab-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.lab-example { min-width: 0; padding: 28px; border: 1px solid #d6dece; background: #fffdf8; border-radius: 14px; }
+.lab-example h3 { font-size: 24px; }
+/* SLIDE 2: default div is block; this declaration makes the demo explicit. */
+.block-example { display: block; background-color: #e1eadc; padding: 9px 12px; margin-bottom: 8px; font-size: 14px; }
+.inline-example { display: inline; background-color: #f0dfcc; }
+.inline-block-example { padding: 9px 14px; border: 1px solid #b7c8b1; border-radius: 6px; margin-bottom: 12px; }
+/* SLIDE 6: enough text plus a constrained height makes overflow visible. */
+.preview { max-height: 180px; overflow: auto; padding-right: 14px; font-size: 15px; }
+/* SLIDE 19: repeat is a property value, url() is the image source. */
+.pattern { min-height: 160px; background-color: #edf1e5; background-image: url("media/pattern.svg"); background-repeat: repeat; border-radius: 8px; margin-bottom: 16px; }
+.background-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.background-sample { height: 150px; background-image: url("media/hero.svg"); background-position: center; background-repeat: no-repeat; background-color: #e8eddf; border-radius: 8px; }
+.sample-cover { background-size: cover; }
+.sample-contain { background-size: contain; }
+.alpha-example, .opacity-example { padding: 16px; margin-bottom: 12px; border-radius: 8px; font-size: 14px; }
+.alpha-example { background-color: rgba(35, 111, 105, 0.25); }
+.opacity-example { background-color: #236f69; color: white; opacity: 0.55; }
+.layers { position: relative; isolation: isolate; min-height: 180px; }
+.layer { position: absolute; width: 65%; padding: 25px; border-radius: 10px; font-weight: bold; }
+.layer-back { top: 0; left: 0; z-index: 1; background-color: #dfc9ad; }
+.layer-front { top: 55px; right: 0; z-index: 2; background-color: #c5d8ca; }
+.teacher-note { margin-top: 26px; padding: 20px; border: 1px dashed #a8b5a2; border-radius: 8px; }
+code { overflow-wrap: anywhere; }
+.practice-form { padding: 26px; background: #e9eddf; border-radius: 14px; }
+label { display: block; margin-bottom: 12px; font-weight: bold; font-size: 14px; }
+input { width: 100%; padding: 12px; border: 1px solid #b4c3ac; border-radius: 6px; font: inherit; color: inherit; background: white; cursor: text; }
+.practice-form .small-note { margin: 12px 0 18px; }
+button { padding: 12px 20px; border: 0; border-radius: 6px; background: #234b40; color: white; font: inherit; cursor: pointer; transition: background-color 0.2s ease; }
+button:hover { background-color: #8b4931; }
+footer { max-width: 1120px; margin: 0 auto; padding: 25px 28px 85px; display: flex; justify-content: space-between; gap: 16px; font-size: 12px; }
+footer p { margin: 0; }
+/* SLIDE 15: fixed link remains near the viewport edge. */
+.back-to-top { position: fixed; right: 20px; bottom: 20px; z-index: 11; background: #234b40; color: white; padding: 8px 14px; border-radius: 8px; box-shadow: 0 4px 18px rgb(0 0 0 / 12%); font-size: 14px; text-decoration: none; }
+.back-to-top:hover { color: white; background: #8b4931; }
+/* SLIDE 12: keyframes and animation must both be present. */
+@keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+.hero-content { animation: appear 0.6s ease; }
+
+/* Responsive layout: keep all content available on narrow screens. */
+@media (max-width: 900px) {
+  .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reading-section, .contact-section { gap: 28px; }
+}
+@media (max-width: 640px) {
+  .header-inner { flex-direction: column; gap: 8px; padding: 10px 18px; }
+  nav { justify-content: center; gap: 8px 18px; }
+  main { padding: 0 18px; }
+  .section { padding: 45px 0; }
+  .projects, .lab-grid, .reading-section, .contact-section { grid-template-columns: 1fr; }
+  .about-photo { float: none; display: block; margin: 0 0 22px; }
+  .hero h1 { letter-spacing: -1px; }
+  .hero-content { padding: 45px 20px 70px; }
+  footer { flex-direction: column; padding-right: 85px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-content { animation: none; }
+  .project-card, button { transition: none; }
+  .project-card:hover { transform: none; }
+}

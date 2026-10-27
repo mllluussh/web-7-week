@@ -1,0 +1,10 @@
+/* Slide 22: imported stylesheet. No external fonts or internet required. */
+body { font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.7; }
+h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: normal; line-height: 1.15; }
+h1 { font-size: clamp(42px, 6vw, 76px); letter-spacing: -2px; }
+h2 { font-size: clamp(32px, 4vw, 44px); letter-spacing: -1px; }
+h3 { font-size: 25px; }
+p { margin: 0 0 18px; }
+h1, h2, h3 { margin: 0 0 20px; }
+.small-note { font-size: 14px; color: #596a68; }
+.eyebrow { font-size: 11px; font-weight: bold; letter-spacing: 2px; }
